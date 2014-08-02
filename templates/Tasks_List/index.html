@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stylesheet.css" />
+    <style>
+        body {background-color: #C0C0C0}
+    </style>
+    <title>Tasks</title>
+</head>
+<body>
+    <h1> Tasks </h1>
+    {% if tasks %}
+        <table align = 'center'>
+            <tr>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>Due Date</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.task_name}}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.current_date }}</td>
+                <td>{{ task.end_date }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <strong>No Tasks </strong>
+    {% endif %}
+    <p><strong><a href="/Tasks_List/add_task/">Add a New Task</a></strong></p>
+    <p><strong><a href="/Tasks_List/delete/">Delete</a></strong></p>
+    <strong><a href="/Tasks_List/history/">See All Tasks</a></strong>
+</body>
+</html>
